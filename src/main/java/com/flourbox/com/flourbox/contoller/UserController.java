@@ -33,15 +33,18 @@ public class UserController {
 		
 	}
 	
+	@GetMapping("/get/user/{userId}")
+	public ResponseEntity<User> getUser(@PathVariable Long userId) {
+	    return new ResponseEntity<>(userService.getUser(userId), HttpStatus.OK);
+	}
+	
+	
+	
+	
 	
 	@GetMapping("/get/all/user")
 	public ResponseEntity <List<User>> getAllUser(){
 		return new ResponseEntity<>(userService.getAllUser() ,HttpStatus.OK);
-	}
-	
-	@GetMapping("/get/user/{userId}")
-	public ResponseEntity<User> getUser(@PathVariable Long userId) {
-	    return new ResponseEntity<>(userService.getUser(userId), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/user")
